@@ -2,6 +2,7 @@
   "name": "lx-music-sync-server",
   "version": "1.9.3",
   "private": true,
+  "bin": "dist/index.js",
   "scripts": {
     "prebuild": "node scripts/download-binary.js && node scripts/update-build-hash.js",
     "build": "rimraf server && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
