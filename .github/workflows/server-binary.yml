@@ -1,4 +1,4 @@
-name: Build Server Binary (Linux only - Node 22)
+name: Build Server Binary (Linux only)
 
 on:
   push:
@@ -32,7 +32,7 @@ jobs:
       - name: Package to Linux binary
         run: |
           pkg index.js \
-            --targets node22-linux-x64 \
+            --targets node*-linux-x64 \   # ←←← 改这里
             --output lxserver-linux-x64
 
       - name: Upload artifact
