@@ -3,8 +3,8 @@ name: Build Server Binary (Linux only - Node 22)
 on:
   push:
     tags:
-      - 'v*'                    # 打 v1.x.x 标签时自动打包
-  workflow_dispatch:            # 手动触发
+      - 'v*'
+  workflow_dispatch:
 
 jobs:
   build-linux:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Package to Linux binary
         run: |
-          pkg dist/index.js \
+          pkg index.js \
             --targets node22-linux-x64 \
             --output lxserver-linux-x64
 
@@ -41,7 +41,6 @@ jobs:
           name: lxserver-linux-x64
           path: lxserver-linux-x64*
 
-      # 可选：自动发布到 Releases
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
