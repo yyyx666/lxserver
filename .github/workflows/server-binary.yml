@@ -14,10 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 20
+      - name: Setup Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Install dependencies
@@ -30,7 +30,7 @@ jobs:
         run: npm install -g pkg
 
       - name: Package to Linux binary
-        run: pkg index.js --targets node20-linux-x64 --output lxserver-linux-x64
+        run: pkg index.js --targets node*-linux-x64 --output lxserver-linux-x64   # ←←← 用这个
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
